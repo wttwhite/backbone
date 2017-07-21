@@ -1,21 +1,17 @@
 (function($){
-    // var Test =Backbone.Model.extend({
-    //     default:{
-    //         done:false  //默认不选
-    //     }
-    // });
-    // var test = new Test;
-    // var obj = {
-    //     'done':true
-    // }
-    // test.set('done',"true");
+    var Test =Backbone.Model.extend({
+        default:{
+            done:false  //默认不选
+        }
+    });
 
+    var TestCollection = Backbone.Collection.extend({
+        model: Test  
+    });
+    var testCollection = new TestCollection({//填充实例
+        done:true
+    });
 
-    // var TestCheck = Backbone.Collection.extend({
-    //     model: Test,
-        //collection还没开始用
-    // })
-  
     var TestView = Backbone.View.extend({
         el:"#all",
         template:_.template($('#content_template').html()),
@@ -23,12 +19,15 @@
         initialize: function () {
             this.render();
         },
-        obj:{
-            'done':true
-        },
+        // obj:{
+        //     'done':true
+        // },
         render: function(){
             //this.model.toJSON()
-            this.$el.find('.content').html(this.template(this.obj)); 
+            var data = {
+                obj:this.collection.toJSON()
+            }
+            this.$el.find('.content').html(this.template(data)); 
             console.log(1);
         },
         events:{
@@ -43,6 +42,7 @@
         hide : function(){
             $('.content').css("display","none");
         }
-    })
-    var testView = new TestView;
+    });
+    
+    var testView = new TestView({collection:testCollection});//创建view实例时把collection传递进去
 })(jQuery)
