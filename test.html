@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/test.css">
+    <title>test</title>
+</head>
+<body>
+    <div class="" id="all">
+        <div class="Dbtn">
+            <button>显示</button>
+        </div>
+        <div class="content">
+        </div>
+    </div>
+    <script src="lib/jquery.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="lib/backbone.js"></script>
+    <script type="text/template" id="content_template">
+        <div id="content">
+            显示
+            <input type="checkbox" <%= done?'checked= "checked"':'' %> />是否选择 
+        </div>
+    </script>
+    <script src="js/test.js"></script>
+    
+</body>
+</html>
